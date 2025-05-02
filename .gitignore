@@ -1,0 +1,21 @@
+# React - client
+myproject-react/node_modules/
+myproject-react/build/
+myproject-react/.env*
+myproject-react/coverage/
+
+# C# - Web API
+WebApiGames/bin/
+WebApiGames/obj/
+WebApiGames/.vs/
+*.user
+*.suo
+
+# SQL - temp files
+*.mdf
+*.ldf
+
+# OS / misc
+.DS_Store
+Thumbs.db
+*.log

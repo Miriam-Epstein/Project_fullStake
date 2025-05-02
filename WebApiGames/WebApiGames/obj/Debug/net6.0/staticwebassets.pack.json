@@ -1,0 +1,77 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\This User\\Desktop\\תוכנה ריאקט -ברוך ה' עובד-\\WebApiGames\\WebApiGames\\wwwroot\\Bimba_Jack.jpg",
+      "PackagePath": "staticwebassets\\Bimba_Jack.jpg"
+    },
+    {
+      "Id": "C:\\Users\\This User\\Desktop\\תוכנה ריאקט -ברוך ה' עובד-\\WebApiGames\\WebApiGames\\wwwroot\\Monopol.jpg",
+      "PackagePath": "staticwebassets\\Monopol.jpg"
+    },
+    {
+      "Id": "C:\\Users\\This User\\Desktop\\תוכנה ריאקט -ברוך ה' עובד-\\WebApiGames\\WebApiGames\\wwwroot\\a_pair_or_tin.jpg",
+      "PackagePath": "staticwebassets\\a_pair_or_tin.jpg"
+    },
+    {
+      "Id": "C:\\Users\\This User\\Desktop\\תוכנה ריאקט -ברוך ה' עובד-\\WebApiGames\\WebApiGames\\wwwroot\\alisa_doll.jpg",
+      "PackagePath": "staticwebassets\\alisa_doll.jpg"
+    },
+    {
+      "Id": "C:\\Users\\This User\\Desktop\\תוכנה ריאקט -ברוך ה' עובד-\\WebApiGames\\WebApiGames\\wwwroot\\baby_doll.jpg",
+      "PackagePath": "staticwebassets\\baby_doll.jpg"
+    },
+    {
+      "Id": "C:\\Users\\This User\\Desktop\\תוכנה ריאקט -ברוך ה' עובד-\\WebApiGames\\WebApiGames\\wwwroot\\bimba.jpg",
+      "PackagePath": "staticwebassets\\bimba.jpg"
+    },
+    {
+      "Id": "C:\\Users\\This User\\Desktop\\תוכנה ריאקט -ברוך ה' עובד-\\WebApiGames\\WebApiGames\\wwwroot\\damka.jpg",
+      "PackagePath": "staticwebassets\\damka.jpg"
+    },
+    {
+      "Id": "C:\\Users\\This User\\Desktop\\תוכנה ריאקט -ברוך ה' עובד-\\WebApiGames\\WebApiGames\\wwwroot\\double_connect.jpg",
+      "PackagePath": "staticwebassets\\double_connect.jpg"
+    },
+    {
+      "Id": "C:\\Users\\This User\\Desktop\\תוכנה ריאקט -ברוך ה' עובד-\\WebApiGames\\WebApiGames\\wwwroot\\meri_doll.jpg",
+      "PackagePath": "staticwebassets\\meri_doll.jpg"
+    },
+    {
+      "Id": "C:\\Users\\This User\\Desktop\\תוכנה ריאקט -ברוך ה' עובד-\\WebApiGames\\WebApiGames\\wwwroot\\scooter_3.jpg",
+      "PackagePath": "staticwebassets\\scooter_3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\This User\\Desktop\\תוכנה ריאקט -ברוך ה' עובד-\\WebApiGames\\WebApiGames\\wwwroot\\sudoku.jpg",
+      "PackagePath": "staticwebassets\\sudoku.jpg"
+    },
+    {
+      "Id": "C:\\Users\\This User\\Desktop\\תוכנה ריאקט -ברוך ה' עובד-\\WebApiGames\\WebApiGames\\wwwroot\\taki.jpg",
+      "PackagePath": "staticwebassets\\taki.jpg"
+    },
+    {
+      "Id": "C:\\Users\\This User\\Desktop\\תוכנה ריאקט -ברוך ה' עובד-\\WebApiGames\\WebApiGames\\wwwroot\\talking_doll.jpg",
+      "PackagePath": "staticwebassets\\talking_doll.jpg"
+    },
+    {
+      "Id": "C:\\Users\\This User\\Desktop\\תוכנה ריאקט -ברוך ה' עובד-\\WebApiGames\\WebApiGames\\wwwroot\\the_race.jpg",
+      "PackagePath": "staticwebassets\\the_race.jpg"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.WebApiGames.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.WebApiGames.props",
+      "PackagePath": "build\\WebApiGames.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.WebApiGames.props",
+      "PackagePath": "buildMultiTargeting\\WebApiGames.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.WebApiGames.props",
+      "PackagePath": "buildTransitive\\WebApiGames.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
