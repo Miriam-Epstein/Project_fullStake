@@ -1,3 +1,4 @@
+////********לפני החלפה לרידקס********************* */
 import { useState } from "react";
 import { updateReactCaterory } from "../axios/Categoryaxios";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -19,9 +20,14 @@ export const Updatecategory=()=>{
        const updateGood =async()=>{
                    let y=( await updateReactCaterory(item.categoryId,item)).data;
                    if(y)
+                   {
                        alert("עודכן בהצלחה")
+                       navigate("/categorys");
+                   }
                    else
+                   {
                        alert("לא הצליח לעדכן")
+                   }
                }
 
     
@@ -34,3 +40,5 @@ export const Updatecategory=()=>{
             </div>
         </div>
 }
+
+

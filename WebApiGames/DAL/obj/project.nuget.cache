@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5963pk6Sw7QcZJY4VizFgXjhlqy0zy1QnxTqDCTqqEbIiOv2bOcZEagG4oeM0kkYGx4cN/3z+T8GDL+8jhgikw==",
+  "dgSpecHash": "rr4xeWmJVDopNtPx395gCOY3Gdf4OQ9d8Y2rW7RiwuP0qHUP6cR3EqVRrCCgqnHa66/JYZ6lxr5RL3Lc5cbQYQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\This User\\Desktop\\תוכנה ריאקט -ברוך ה' עובד-\\WebApiGames\\DAL\\DAL.csproj",
+  "projectFilePath": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\DAL\\DAL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\This User\\.nuget\\packages\\automapper\\8.0.0\\automapper.8.0.0.nupkg.sha512",
     "C:\\Users\\This User\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\6.0.0\\automapper.extensions.microsoft.dependencyinjection.6.0.0.nupkg.sha512",

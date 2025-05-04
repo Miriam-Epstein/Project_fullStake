@@ -3022,11 +3022,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\This User\\Desktop\\תוכנה ריאקט -ברוך ה' עובד-\\WebApiGames\\WebApiGames\\WebApiGames.csproj",
+      "projectUniqueName": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\WebApiGames\\WebApiGames.csproj",
       "projectName": "WebApiGames",
-      "projectPath": "C:\\Users\\This User\\Desktop\\תוכנה ריאקט -ברוך ה' עובד-\\WebApiGames\\WebApiGames\\WebApiGames.csproj",
+      "projectPath": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\WebApiGames\\WebApiGames.csproj",
       "packagesPath": "C:\\Users\\This User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\This User\\Desktop\\תוכנה ריאקט -ברוך ה' עובד-\\WebApiGames\\WebApiGames\\obj\\",
+      "outputPath": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\WebApiGames\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -3049,14 +3049,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\This User\\Desktop\\תוכנה ריאקט -ברוך ה' עובד-\\WebApiGames\\BLL\\BLL.csproj": {
-              "projectPath": "C:\\Users\\This User\\Desktop\\תוכנה ריאקט -ברוך ה' עובד-\\WebApiGames\\BLL\\BLL.csproj"
+            "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\BLL\\BLL.csproj": {
+              "projectPath": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\BLL\\BLL.csproj"
             },
-            "C:\\Users\\This User\\Desktop\\תוכנה ריאקט -ברוך ה' עובד-\\WebApiGames\\DAL\\DAL.csproj": {
-              "projectPath": "C:\\Users\\This User\\Desktop\\תוכנה ריאקט -ברוך ה' עובד-\\WebApiGames\\DAL\\DAL.csproj"
+            "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\DAL\\DAL.csproj": {
+              "projectPath": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\DAL\\DAL.csproj"
             },
-            "C:\\Users\\This User\\Desktop\\תוכנה ריאקט -ברוך ה' עובד-\\WebApiGames\\DTO\\DTO.csproj": {
-              "projectPath": "C:\\Users\\This User\\Desktop\\תוכנה ריאקט -ברוך ה' עובד-\\WebApiGames\\DTO\\DTO.csproj"
+            "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\DTO\\DTO.csproj": {
+              "projectPath": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\DTO\\DTO.csproj"
             }
           }
         }

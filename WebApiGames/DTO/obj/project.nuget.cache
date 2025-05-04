@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dhC939Wjm+rD9JgSVVkacKUsm5T6ieAsn628rOzQDDue83f3dX1aZAkMmF3Dv20pLMc5i6Pe5yrkmP2nRk2Q4Q==",
+  "dgSpecHash": "3xeg8CKw0rGio7Fk5z6NGwsn+RjV96n3Ca1qDIIs1WlqAEpR8cXxwbKKBkaHieIOFtEPzCrMQTaHcjilVeQcVw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\This User\\Desktop\\תוכנה ריאקט -ברוך ה' עובד-\\WebApiGames\\DTO\\DTO.csproj",
+  "projectFilePath": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\DTO\\DTO.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\This User\\.nuget\\packages\\automapper\\8.0.0\\automapper.8.0.0.nupkg.sha512",
     "C:\\Users\\This User\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\6.0.0\\automapper.extensions.microsoft.dependencyinjection.6.0.0.nupkg.sha512",

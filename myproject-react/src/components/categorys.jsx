@@ -1,72 +1,78 @@
-import { useEffect, useState } from "react"
-import { getAllReactCategorys } from "../axios/Categoryaxios";
-import { Link, Outlet, useLocation, useNavigate, useViewTransitionState } from "react-router-dom";
-import { deleteReactCategory } from "../axios/Categoryaxios";
-export const Categorys=()=>{
-   
 
-    const[list,setlist]=useState([])
 
-//-----------פונקציה שמציגה את כל הקטגוריות--------------
- const doSomething=async()=>{   //סיכרונית כי היא קוראת לפונקציה סיכרונית
-    //כדי שלא תיהיה לולאה אין סופית 
-    if(list.length==0)
-    {
-        //קבלת הנתונים מהשרת
-         let y =( await getAllReactCategorys()).data;
-        setlist(y)
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, Outlet } from "react-router-dom";
+import { getAllReactCategorys, deleteReactCategory } from "../axios/Categoryaxios";
+import { setCategoriesAction } from "../redux/actions/categoryActions";
+
+export const Categorys = () => {
+  const dispatch = useDispatch();
+  const categories = useSelector(state => state.category.categories);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        console.log("Attempting to fetch categories...");
+        const response = await getAllReactCategorys();
+        console.log("Response from API:", response); // הודעה זו תראה את התגובה
+        if (response?.data) {
+          console.log("Fetched categories:", response.data);
+          dispatch(setCategoriesAction(response.data));
+        }
+      } catch (error) {
+        console.error("שגיאה בשליפת קטגוריות:", error);
+      }
+    };
+
+    fetchCategories();
+  }, [dispatch]);
+
+  const handleDelete = async (id) => {
+    try {
+      const response = await deleteReactCategory(id);
+      if (response?.data) {
+        alert("הקטגוריה נמחקה בהצלחה");
+        const updated = categories.filter(c => c.categoryId !== id);
+        dispatch(setCategoriesAction(updated));
+      }
+    } catch (error) {
+      alert("שגיאה במחיקת הקטגוריה");
     }
- }
-   
-   useEffect(()=>{
-    doSomething();
-   },[])
+  };
 
-   //משתנים לרענון
-   const navigate = useNavigate();
-   const location = useLocation();
+  return (
+    <div className="container mt-4">
+      <table className="table table-bordered text-center mt-5">
+        <thead>
+          <tr>
+            <th>categoryId</th>
+            <th>categoryName</th>
+            <th>אפשרויות</th>
+          </tr>
+        </thead>
+        <tbody>
+          {categories.map(category => (
+            <tr key={category.categoryId}>
+              <td>{category.categoryId}</td>
+              <td>{category.categoryName}</td>
+              <td>
+                <button onClick={() => handleDelete(category.categoryId)}>🗑️</button>
+                <Link to={`/categorys/updatecategory/${category.categoryId}`}>🔄</Link>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
-   const f1 = async (id) => {
-    debugger
-    let y = await deleteReactCategory(id)
-    if (y)
-    {
-        alert("הצלחת")
-       
-   
+      <Link className="btn btn-outline-dark" to={`/categorys/addcategory`}>
+        add_newCategory
+      </Link>
 
-    }
-    else {alert("נכשלת")}
-}
-
-return <>
-         <div className="container mt-4"><table className="table table-bordered" style={{ marginTop: '50px', textAlign: 'center' }}>
-            <thead>
-                <tr>
-                    <th scope="col">categoryId </th>
-                    <th scope="col">categoryName </th>
-                    <th scope="col">אפשריות נוספות</th>
-                </tr>
-            </thead>
-            <tbody>
-                {list.map((x, i) => (
-                    <tr key={x}>
-                        <td>{x.categoryId}</td>
-                        <td>{x.categoryName}</td>
-                        <td> <button onClick={() => f1(x.categoryId)}>🗑️</button>
-                            <Link to={`/categorys/updatecategory/${x.categoryId}`} >🔄</Link>
-                        </td>
-                    </tr>
-                ))}
-               
-            </tbody>
-        </table></div>
-        <Link className="btn btn-outline-dark" to={`/categorys/addcategory`}>add_newCategory</Link>
-        <Outlet></Outlet>
-    </>
-
-   
-}
+      <Outlet />
+    </div>
+  );
+};
 
 
 
@@ -112,34 +118,3 @@ return <>
 
 
 
-
-//----------------לפי שיטת שרי-------
-// return<div>
-// <table className="table">
-//     <thead>
-//         <tr>
-//             <th>categoryId</th>
-//             <th>categoryName</th>
-//             <th> מחיקה</th>  
-//             <th> עדכון </th>
-//         </tr>
-//     </thead>
-//     <tbody>
-//         {list.map((x,i)=><tr key={i}>
-//             <td>{x.categoryId}</td>
-//             <td>{x.categoryName}</td>
-//             <td>
-//                  <button onClick={() => f1(x.categoryId)}>🗑️</button>
-//                 {/* <Link to={`/categorys/deletecategory/${x.categoryId}`} className="btn btn-outline-black w-100 mb-2">🗑️</Link> */}
-//             </td>
-//             <td>
-//             <Link to={`/categorys/updatecategory`} cclassName="btn btn-outline-black w-100 mb-2">🔄</Link>
-//             </td>
-//         </tr>)}
-//     </tbody>
-// </table>
-// <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}> 
-//     <Link to={`/categorys/addcategory`} className="btn btn-primary">add_newCategory</Link>
-// </div>
-// <Outlet></Outlet>
-// </div>

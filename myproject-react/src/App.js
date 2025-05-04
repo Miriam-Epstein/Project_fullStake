@@ -1,56 +1,57 @@
+
+
+
 import './App.css';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { Menu } from './components/menu';
 import { Myrouting } from './components/myrouting';
-import { useState } from 'react';
-import { MyProvider } from './contex';
+import { useSelector, useDispatch } from 'react-redux';
+import { setCustomer, setSal, setPassUser, setSum } from './redux/actions/shoppingActions';
+import { setCurrentCustomer, setCustomerId } from './redux/actions/customerActions';
+import { useEffect } from 'react';
 
 function App() {
+  const dispatch = useDispatch();
 
-  const [cust,setcust] = useState("no counct");//------------משתנה גלובלי בשביל המשתמש------
-   
-  const [sal,setsal]=useState([])//--------יצירת רשימה גלובלית לסל קניות-----
+  useEffect(() => {
+    const name = sessionStorage.getItem("currentCustomer");
+    const pass = sessionStorage.getItem("passUser");
+    const id = sessionStorage.getItem("customerId");
 
-  const[passUser,setpassUser]=useState("000");//pass user
+    if (name && pass && id) {
+      dispatch(setCurrentCustomer(name));
+      dispatch(setPassUser(pass)); 
+      dispatch(setCustomerId(+id));
+    }
+  }, []);
 
-  //בשביל לדעת כמה עלתה הקניה
-  const[sum,setsum]=useState(0)
+  const cust = useSelector(state => state.customer.currentCustomer);
+  const sal = useSelector(state => state.cart.sal);
+  const passUser = useSelector(state => state.customer.passUser);
+  const sum = useSelector(state => state.cart.sum);
 
-  const [customerId,setcustomerId] = useState(0)//מכיל את האידי בשביל פונקציה קניה
+  const updateCustomer = (newCustomer) => {
+    dispatch(setCustomer(newCustomer));
+  };
 
-  const [custtemp,setcusttemp] = useState("");//------------משתנה גלובלי בשביל המשתמש------
+  const updateCart = (newCart) => {
+    dispatch(setSal(newCart));
+  };
 
-   
-    //----------קובץ stor.js-----------
-  const store = {
+  const updatePassUser = (newPass) => {
+    dispatch(setPassUser(newPass));
+  };
 
-    customerId:customerId,
-    setcustomerId:setcustomerId,
+  const updateSum = (newSum) => {
+    dispatch(setSum(newSum));
+  };
 
-    
-    currentCustomer:cust,
-    setcurrentCustomer: setcust,
-
-   
-   
-    sal:sal,
-    setsal:setsal,
-
-    passUser:passUser,
-    setpassUser:setpassUser,
-
-    sum:sum,
-    setsum:setsum
-  }
-  
   return (
-    <div >
-      <MyProvider  value={store}>
-        <BrowserRouter> 
-          <Menu></Menu>
-          <Myrouting></Myrouting>
-        </BrowserRouter>
-     </MyProvider>
+    <div>
+      <HashRouter>
+        <Menu />
+        <Myrouting />
+      </HashRouter>
     </div>
   );
 }

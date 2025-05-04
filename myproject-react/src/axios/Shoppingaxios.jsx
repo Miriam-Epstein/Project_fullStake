@@ -20,3 +20,6 @@ export const SaveCart_Shopping_Axios = (customerId, listshoppingSal) => {
    export const GetBuys=(custId)=>{
     return axios.get(`${url}getBuysByCustId/${custId}`,custId)
  }
+
+
+ 

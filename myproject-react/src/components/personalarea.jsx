@@ -1,103 +1,26 @@
-//----------פרטי הקניה לא עובד לפני עזרה מGBT----------------
 
-// import { useContext, useEffect, useState } from "react"
-// import MyContex from "../contex"
-// import { haveThisCustomerReact } from "../axios/Customeraxios"
-// import { GetBuys } from "../axios/Shoppingaxios"
-// import { Link, Outlet } from "react-router-dom"
-
-// export const Personalarea =()=>{
-
-//     const passUser=useContext(MyContex).passUser
-//     const curentUser=useContext(MyContex).currentCustomer
-
-//     useEffect(()=>{
-//         doSomething()      
-//     },[])
-
-//     const[Buys,setBuys]=useState([
-//         {
-//             "shoppingId": 0,
-//             "customerCode": 0,
-//             "date": "2023-01-01T00:00:00",
-//             "amount": 0
-//         }
-//     ])
-
-//     const doSomething=async()=>{
-//         //let g
-//      let custId=(await haveThisCustomerReact(curentUser,passUser)).data
-//      let y=(await GetBuys(custId)).data
-//     if(y!==null)
-//         {
-//             setBuys(y)
-//         }
-//     }
-
-//     return <div>
-//         <table className="table" style={{textAlign:"center"}}>
-//             <thead>
-//                 <tr>
-//                     <th>ShoppingId</th>
-//                     <th> CustomerCode</th>
-//                     <th> Date</th>
-//                     <th>Amount</th>
-//                     <th>more information</th>
-//                 </tr>
-//             </thead>
-//             <tbody>
-//                  {Buys.map((x,i)=><tr key={i}>
-//                     <td>{x.shoppingId}</td><td>{x.customerCode}</td><td>{x.date}</td><td>{x.amount}</td>
-//                 {/* <td><Link to={`/personal/showSaleDetail/${x.shoppingId}`} className="btn btn-outline-dark mb-2">Information</Link></td> */}
-//                 <td><Link to={`/personalarea/showSaleDetaildWind/${x.shoppingId}`} className="btn btn-outline-dark mb-2">Information</Link></td>
-
-//                  </tr>
-//                 )}
-//             </tbody>
-//         </table>
-// <Outlet></Outlet>
-
-//     </div>
-// }
-    
-
-
-//---------------------------אחרי טיפול מספר---1--------------------
-
-import { useContext, useEffect, useState } from "react";
-import MyContex from "../contex";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { haveThisCustomerReact } from "../axios/Customeraxios";
 import { GetBuys } from "../axios/Shoppingaxios";
 import { Link, Outlet } from "react-router-dom";
 
 export const Personalarea = () => {
-  const passUser = useContext(MyContex).passUser
-  const setpassUser = useContext(MyContex).setpassUser;
-
-  const currentUser = useContext(MyContex).currentCustomer;
-  const setcurrentUser = useContext(MyContex).setcurrentCustomer;
-  const customerId = useContext(MyContex).customerId;
-  const setCustomerId = useContext(MyContex).setcustomerId;
+  const currentUser = useSelector((state) => state.customer.currentCustomer);
+  const passUser = useSelector((state) => state.customer.passUser);
+  
   const [buys, setBuys] = useState([]);
-   
-   debugger
-   console.log(passUser)
-   console.log(currentUser)
-
   useEffect(() => {
     doSomething();
   }, []);
 
+ 
+
   const doSomething = async () => {
     try {
-        
-      const custIdResponse = await haveThisCustomerReact(currentUser, passUser);// מחזיר את האידי של הלקוח 
-      const custId = custIdResponse.data;// שליפת האידי של הלקוח מהנתונים
-      const buysResponse = await GetBuys(custId);//הטבלת קניות שחוזרת לפי קוד לקוח
-    
-      console.log(custIdResponse)
-     console.log(custId)
-     console.log(buysResponse)
+      const custIdResponse = await haveThisCustomerReact(currentUser, passUser);
+      const custId = custIdResponse.data;
+      const buysResponse = await GetBuys(custId);
 
       if (buysResponse.data) {
         setBuys(buysResponse.data);
@@ -108,43 +31,45 @@ export const Personalarea = () => {
   };
 
   return (
-    <div>
-      <h2>אזור אישי</h2>
-      <table className="table" style={{ textAlign: "center" }}>
-        <thead>
-          <tr>
-            <th>ShoppingId</th>
-            <th>CustomerCode</th>
-            <th>Date</th>
-            <th>Amount</th>
-            <th>More Information</th>
-          </tr>
-        </thead>
-        <tbody>
-          {buys.map((x, i) => (
-            <tr key={i}>
-              <td>{x.shoppingId}</td>
-              <td>{x.customerCode}</td>
-              <td>{x.date}</td>
-              <td>{x.amount}</td>
-              <td>
-                <Link
-                  to={`/personalarea/showSaleDetaildWind/${x.shoppingId}`}
-                  className="btn btn-outline-dark mb-2"
-                >
-                  Information
-                </Link>
-              </td>
+    <div className="container mt-5">
+      {/* כותרת עם הסבר נעים ומזמין */}
+      <h2 className="text-center mb-4 text-primary">!ברוך הבא לאזור האישי שלך</h2>
+      <p className="text-center mb-4">כאן תוכל למצוא את כל הקניות שביצעת  ולראות פרטים נוספים </p>
+      
+      {/* טבלה עם עיצוב מודרני */}
+      <div className="table-responsive shadow-lg rounded-3 p-3 bg-light">
+        <table className="table table-hover table-bordered">
+          <thead className="table-dark">
+            <tr>
+              <th>ShoppingId</th>
+              <th>CustomerCode</th>
+              <th>Date</th>
+              <th>Amount</th>
+              <th>More Information</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {buys.map((x, i) => (
+              <tr key={i}>
+                <td>{x.shoppingId}</td>
+                <td>{x.customerCode}</td>
+                <td>{x.date}</td>
+                <td>{x.amount}</td>
+                <td>
+                  <Link
+                    to={`/personalarea/showSaleDetaildWind/${x.shoppingId}`}
+                    className="btn btn-outline-primary"
+                  >
+                    מידע נוסף
+                  </Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
       <Outlet />
     </div>
   );
 };
-
-
-
-
-   

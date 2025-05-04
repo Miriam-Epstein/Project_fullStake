@@ -1,33 +1,49 @@
-import { useEffect, useState } from "react";
+
+
+//***********************אחרי שינוי לרידקס********* */
+
+import { useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { deleteReactCategory } from "../axios/Categoryaxios";
-import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setCategoriesAction } from "../redux/actions/categoryActions";
 
-export const Deletecategory=()=>{
+export const Deletecategory = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-        useEffect(()=>{
-            deletGood()
-        },[])
+  // שליפת רשימת הקטגוריות מה־Redux
+  const categories = useSelector((state) => state.category.categories);
 
-        let myparams=useParams();
-        
-        const [item,setitem]=useState(false)
+  useEffect(() => {
+    const deletGood = async () => {
+      try {
+        const response = await deleteReactCategory(id);
+        if (response?.data) {
+          alert("הקטגוריה נמחקה בהצלחה");
 
-        const deletGood=async()=>{
-            if(item===false)
-           {
-            let y=(await deleteReactCategory(myparams.id)).data
-            if(y)
-            {
-                alert("הקטגוריה נמחקה בהצלחה")
-                setitem(true)
-            }
-           }
-           else            
-           {
-               alert("הקטגוריה לא נמחקה")
-           }
-    }
-    return <div> 
-        <h3>***********deletcategory********</h3>
+          // סינון הקטגוריה שנמחקה מתוך ה־store
+          const updated = categories.filter((cat) => cat.categoryId !== +id);
+          dispatch(setCategoriesAction(updated));
+
+          // חזרה אוטומטית לדף הקטגוריות
+          navigate("/categorys");
+        } else {
+          alert("שגיאה במחיקה");
+        }
+      } catch (error) {
+        console.error("שגיאה במחיקת קטגוריה:", error);
+        alert("נכשל למחוק מהשרת");
+      }
+    };
+
+    deletGood();
+  }, [id, dispatch, categories, navigate]);
+
+  return (
+    <div className="container mt-4">
+      <h3>מוחק קטגוריה...</h3>
     </div>
-}
+  );
+};

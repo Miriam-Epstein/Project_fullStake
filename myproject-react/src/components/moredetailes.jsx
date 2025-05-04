@@ -1,3 +1,6 @@
+
+
+///*********לפני רידקס */
 import { useEffect, useState } from "react"
 import {getGameReactById} from "../axios/Gameaxios";
 import { useParams } from "react-router-dom";
@@ -44,32 +47,9 @@ export const Moredetailes=()=>{
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//***********אחרי רידקס*********** */
+//********אין צורך לשנות אין לה שימוש ברידקס*********** */
 
 
 
     
-    //--------בלי עיצוב------
-    // return <div style={{ display: 'grid'}}>
-       
-    //                     <img height={'300px'} src={`https://localhost:7035/${list.picture}`}></img>
-    //                     <h1 className="card-title">{list.productName} :{list.gameId}</h1>
-    //                     <h2 className="card-text">{list.price}₪</h2>
-    //     </div>

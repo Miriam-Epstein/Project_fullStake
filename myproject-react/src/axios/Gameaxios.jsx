@@ -1,4 +1,5 @@
 import axios from "axios";  
+
 const url="https://localhost:7035/api/game/"
 
 //שליפת כל המשחקים
