@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "w7xrDIVygWaMRrN4xBQXrxgGLVto6Xx9ugM9i07BzSR5q1c0RQ/G/TIT0+qPqCfV4Slji13IIQ9kWWMJWz4Ynw==",
+  "dgSpecHash": "Xvw5oGK4PczfWcDpv/fnZw6SlprCgY3n65Cf757ZK7dpZYsQUgzBMMSMddtMGJB6LbRcn+TQkM0YOYeUd2vzhA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\BLL\\BLL.csproj",
+  "projectFilePath": "C:\\Users\\This User\\Desktop\\פרויקטים GitHub משופצים\\Project_fullStake\\WebApiGames\\BLL\\BLL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\This User\\.nuget\\packages\\automapper\\8.0.0\\automapper.8.0.0.nupkg.sha512",
     "C:\\Users\\This User\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\6.0.0\\automapper.extensions.microsoft.dependencyinjection.6.0.0.nupkg.sha512",

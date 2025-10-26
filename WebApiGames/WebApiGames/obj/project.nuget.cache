@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "aHUX/hTOTBa3nsjoct1Cqg+CBJc1Z5s7YUkvtDqaWEjzoG0AuNX6X7Gri1dm5GtETJb/73MteuDAmJzPWO1y3w==",
+  "dgSpecHash": "c27qnJQemY8zdDLTe68kMRjW+crI+1Y86fGug8rYn29PVC1lnus8jfTpwrZCiZLZIdhfGMrhmbTIetEgPtiq7Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\WebApiGames\\WebApiGames.csproj",
+  "projectFilePath": "C:\\Users\\This User\\Desktop\\פרויקטים GitHub משופצים\\Project_fullStake\\WebApiGames\\WebApiGames\\WebApiGames.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\This User\\.nuget\\packages\\automapper\\8.0.0\\automapper.8.0.0.nupkg.sha512",
     "C:\\Users\\This User\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\6.0.0\\automapper.extensions.microsoft.dependencyinjection.6.0.0.nupkg.sha512",

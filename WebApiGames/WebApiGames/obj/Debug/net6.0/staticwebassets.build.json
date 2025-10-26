@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "pTycg4ADhh4ISzf2Ntg9R5MxVQNfoTAXbfw8elVHMcQ=",
+  "Hash": "e1V/P3nc/ICQB3ZsyIWafis27bw6t/05rfQPRSkaFII=",
   "Source": "WebApiGames",
   "BasePath": "_content/WebApiGames",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "WebApiGames\\wwwroot",
       "Source": "WebApiGames",
-      "ContentRoot": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\WebApiGames\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\This User\\Desktop\\פרויקטים GitHub משופצים\\Project_fullStake\\WebApiGames\\WebApiGames\\wwwroot\\",
       "BasePath": "_content/WebApiGames",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\WebApiGames\\wwwroot\\a_pair_or_tin.jpg",
+      "Identity": "C:\\Users\\This User\\Desktop\\פרויקטים GitHub משופצים\\Project_fullStake\\WebApiGames\\WebApiGames\\wwwroot\\a_pair_or_tin.jpg",
       "SourceId": "WebApiGames",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\WebApiGames\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\This User\\Desktop\\פרויקטים GitHub משופצים\\Project_fullStake\\WebApiGames\\WebApiGames\\wwwroot\\",
       "BasePath": "_content/WebApiGames",
       "RelativePath": "a_pair_or_tin.jpg",
       "AssetKind": "All",
@@ -34,10 +34,10 @@
       "OriginalItemSpec": "wwwroot\\a_pair_or_tin.jpg"
     },
     {
-      "Identity": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\WebApiGames\\wwwroot\\alisa_doll.jpg",
+      "Identity": "C:\\Users\\This User\\Desktop\\פרויקטים GitHub משופצים\\Project_fullStake\\WebApiGames\\WebApiGames\\wwwroot\\alisa_doll.jpg",
       "SourceId": "WebApiGames",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\WebApiGames\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\This User\\Desktop\\פרויקטים GitHub משופצים\\Project_fullStake\\WebApiGames\\WebApiGames\\wwwroot\\",
       "BasePath": "_content/WebApiGames",
       "RelativePath": "alisa_doll.jpg",
       "AssetKind": "All",
@@ -51,10 +51,10 @@
       "OriginalItemSpec": "wwwroot\\alisa_doll.jpg"
     },
     {
-      "Identity": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\WebApiGames\\wwwroot\\baby_doll.jpg",
+      "Identity": "C:\\Users\\This User\\Desktop\\פרויקטים GitHub משופצים\\Project_fullStake\\WebApiGames\\WebApiGames\\wwwroot\\baby_doll.jpg",
       "SourceId": "WebApiGames",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\WebApiGames\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\This User\\Desktop\\פרויקטים GitHub משופצים\\Project_fullStake\\WebApiGames\\WebApiGames\\wwwroot\\",
       "BasePath": "_content/WebApiGames",
       "RelativePath": "baby_doll.jpg",
       "AssetKind": "All",
@@ -68,27 +68,10 @@
       "OriginalItemSpec": "wwwroot\\baby_doll.jpg"
     },
     {
-      "Identity": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\WebApiGames\\wwwroot\\bimba.jpg",
+      "Identity": "C:\\Users\\This User\\Desktop\\פרויקטים GitHub משופצים\\Project_fullStake\\WebApiGames\\WebApiGames\\wwwroot\\Bimba_Jack.jpg",
       "SourceId": "WebApiGames",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\WebApiGames\\wwwroot\\",
-      "BasePath": "_content/WebApiGames",
-      "RelativePath": "bimba.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\bimba.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\WebApiGames\\wwwroot\\Bimba_Jack.jpg",
-      "SourceId": "WebApiGames",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\WebApiGames\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\This User\\Desktop\\פרויקטים GitHub משופצים\\Project_fullStake\\WebApiGames\\WebApiGames\\wwwroot\\",
       "BasePath": "_content/WebApiGames",
       "RelativePath": "Bimba_Jack.jpg",
       "AssetKind": "All",
@@ -102,10 +85,27 @@
       "OriginalItemSpec": "wwwroot\\Bimba_Jack.jpg"
     },
     {
-      "Identity": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\WebApiGames\\wwwroot\\damka.jpg",
+      "Identity": "C:\\Users\\This User\\Desktop\\פרויקטים GitHub משופצים\\Project_fullStake\\WebApiGames\\WebApiGames\\wwwroot\\bimba.jpg",
       "SourceId": "WebApiGames",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\WebApiGames\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\This User\\Desktop\\פרויקטים GitHub משופצים\\Project_fullStake\\WebApiGames\\WebApiGames\\wwwroot\\",
+      "BasePath": "_content/WebApiGames",
+      "RelativePath": "bimba.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\bimba.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\This User\\Desktop\\פרויקטים GitHub משופצים\\Project_fullStake\\WebApiGames\\WebApiGames\\wwwroot\\damka.jpg",
+      "SourceId": "WebApiGames",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\This User\\Desktop\\פרויקטים GitHub משופצים\\Project_fullStake\\WebApiGames\\WebApiGames\\wwwroot\\",
       "BasePath": "_content/WebApiGames",
       "RelativePath": "damka.jpg",
       "AssetKind": "All",
@@ -119,10 +119,10 @@
       "OriginalItemSpec": "wwwroot\\damka.jpg"
     },
     {
-      "Identity": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\WebApiGames\\wwwroot\\double_connect.jpg",
+      "Identity": "C:\\Users\\This User\\Desktop\\פרויקטים GitHub משופצים\\Project_fullStake\\WebApiGames\\WebApiGames\\wwwroot\\double_connect.jpg",
       "SourceId": "WebApiGames",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\WebApiGames\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\This User\\Desktop\\פרויקטים GitHub משופצים\\Project_fullStake\\WebApiGames\\WebApiGames\\wwwroot\\",
       "BasePath": "_content/WebApiGames",
       "RelativePath": "double_connect.jpg",
       "AssetKind": "All",
@@ -136,10 +136,10 @@
       "OriginalItemSpec": "wwwroot\\double_connect.jpg"
     },
     {
-      "Identity": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\WebApiGames\\wwwroot\\meri_doll.jpg",
+      "Identity": "C:\\Users\\This User\\Desktop\\פרויקטים GitHub משופצים\\Project_fullStake\\WebApiGames\\WebApiGames\\wwwroot\\meri_doll.jpg",
       "SourceId": "WebApiGames",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\WebApiGames\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\This User\\Desktop\\פרויקטים GitHub משופצים\\Project_fullStake\\WebApiGames\\WebApiGames\\wwwroot\\",
       "BasePath": "_content/WebApiGames",
       "RelativePath": "meri_doll.jpg",
       "AssetKind": "All",
@@ -153,10 +153,10 @@
       "OriginalItemSpec": "wwwroot\\meri_doll.jpg"
     },
     {
-      "Identity": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\WebApiGames\\wwwroot\\Monopol.jpg",
+      "Identity": "C:\\Users\\This User\\Desktop\\פרויקטים GitHub משופצים\\Project_fullStake\\WebApiGames\\WebApiGames\\wwwroot\\Monopol.jpg",
       "SourceId": "WebApiGames",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\WebApiGames\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\This User\\Desktop\\פרויקטים GitHub משופצים\\Project_fullStake\\WebApiGames\\WebApiGames\\wwwroot\\",
       "BasePath": "_content/WebApiGames",
       "RelativePath": "Monopol.jpg",
       "AssetKind": "All",
@@ -170,10 +170,10 @@
       "OriginalItemSpec": "wwwroot\\Monopol.jpg"
     },
     {
-      "Identity": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\WebApiGames\\wwwroot\\scooter_3.jpg",
+      "Identity": "C:\\Users\\This User\\Desktop\\פרויקטים GitHub משופצים\\Project_fullStake\\WebApiGames\\WebApiGames\\wwwroot\\scooter_3.jpg",
       "SourceId": "WebApiGames",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\WebApiGames\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\This User\\Desktop\\פרויקטים GitHub משופצים\\Project_fullStake\\WebApiGames\\WebApiGames\\wwwroot\\",
       "BasePath": "_content/WebApiGames",
       "RelativePath": "scooter_3.jpg",
       "AssetKind": "All",
@@ -187,10 +187,10 @@
       "OriginalItemSpec": "wwwroot\\scooter_3.jpg"
     },
     {
-      "Identity": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\WebApiGames\\wwwroot\\sudoku.jpg",
+      "Identity": "C:\\Users\\This User\\Desktop\\פרויקטים GitHub משופצים\\Project_fullStake\\WebApiGames\\WebApiGames\\wwwroot\\sudoku.jpg",
       "SourceId": "WebApiGames",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\WebApiGames\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\This User\\Desktop\\פרויקטים GitHub משופצים\\Project_fullStake\\WebApiGames\\WebApiGames\\wwwroot\\",
       "BasePath": "_content/WebApiGames",
       "RelativePath": "sudoku.jpg",
       "AssetKind": "All",
@@ -204,10 +204,10 @@
       "OriginalItemSpec": "wwwroot\\sudoku.jpg"
     },
     {
-      "Identity": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\WebApiGames\\wwwroot\\taki.jpg",
+      "Identity": "C:\\Users\\This User\\Desktop\\פרויקטים GitHub משופצים\\Project_fullStake\\WebApiGames\\WebApiGames\\wwwroot\\taki.jpg",
       "SourceId": "WebApiGames",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\WebApiGames\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\This User\\Desktop\\פרויקטים GitHub משופצים\\Project_fullStake\\WebApiGames\\WebApiGames\\wwwroot\\",
       "BasePath": "_content/WebApiGames",
       "RelativePath": "taki.jpg",
       "AssetKind": "All",
@@ -221,10 +221,10 @@
       "OriginalItemSpec": "wwwroot\\taki.jpg"
     },
     {
-      "Identity": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\WebApiGames\\wwwroot\\talking_doll.jpg",
+      "Identity": "C:\\Users\\This User\\Desktop\\פרויקטים GitHub משופצים\\Project_fullStake\\WebApiGames\\WebApiGames\\wwwroot\\talking_doll.jpg",
       "SourceId": "WebApiGames",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\WebApiGames\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\This User\\Desktop\\פרויקטים GitHub משופצים\\Project_fullStake\\WebApiGames\\WebApiGames\\wwwroot\\",
       "BasePath": "_content/WebApiGames",
       "RelativePath": "talking_doll.jpg",
       "AssetKind": "All",
@@ -238,10 +238,10 @@
       "OriginalItemSpec": "wwwroot\\talking_doll.jpg"
     },
     {
-      "Identity": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\WebApiGames\\wwwroot\\the_race.jpg",
+      "Identity": "C:\\Users\\This User\\Desktop\\פרויקטים GitHub משופצים\\Project_fullStake\\WebApiGames\\WebApiGames\\wwwroot\\the_race.jpg",
       "SourceId": "WebApiGames",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\This User\\Desktop\\ProjectGames\\WebApiGames\\WebApiGames\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\This User\\Desktop\\פרויקטים GitHub משופצים\\Project_fullStake\\WebApiGames\\WebApiGames\\wwwroot\\",
       "BasePath": "_content/WebApiGames",
       "RelativePath": "the_race.jpg",
       "AssetKind": "All",

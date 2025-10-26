@@ -14,15 +14,15 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-//джшчеъ щм лм озмчд моощш двршй
-//ъйчеп итеъ-бсек ма тщйъй в'ршй
-//джшчеъ щм оощчй щлбъ дгм
+//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ'пїЅпїЅпїЅ
+//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 builder.Services.AddScoped<IcategoryDAL,categoryDAL >();
 builder.Services.AddScoped<IcustomerDAL, customerDAL>();
 builder.Services.AddScoped<IgameDAL, gameDAL>();
 builder.Services.AddScoped<IpurchaseDetailDAL, purchaseDetailDAL>();
 builder.Services.AddScoped< IshoppingDAL, shoppingDAL>();
-//джшчеъ щм щлбъ дбм
+//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 //********************
 builder.Services.AddScoped<InterfaceCategoryBLL,categoryBLL>();
 builder.Services.AddScoped<InterfaceCustomerBLL, customerBLL>();
@@ -30,25 +30,25 @@ builder.Services.AddScoped<InterfaceGameBLL, gameBLL>();
 builder.Services.AddScoped<InterfacePurchaseDetailBLL, purchaseDetailBLL>();
 builder.Services.AddScoped<InterfaceSoppingBLL, shoppingBLL>();
 
-//DTO щййк мщлбъ д
+//DTO пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ
 builder.Services.AddAutoMapper(typeof(Program));
 
-//джшчъ лм дръерйн оибмаеъ
+//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 builder.Services.AddDbContext<GameStoreDBContext>
-(options => options.UseSqlServer("Scaffold-DbContext \"Server=DESKTOP-L9S4R74;Database=GameStoreDB;TrustServerCertificate=True;Trusted_Connection=True;\" Microsoft.EntityFrameworkCore.SqlServer -OutputDir models"));
+(options => options.UseSqlServer("Server=DESKTOP-L9S4R74;Database=GameStoreDB;TrustServerCertificate=True;Trusted_Connection=True;"));
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    //дшщаеъ
-    app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()); //мшйачи
+    //пїЅпїЅпїЅпїЅпїЅпїЅ
+    app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()); //пїЅпїЅпїЅпїЅпїЅпїЅ
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-app.UseStaticFiles();//зйбеш мъоереъ
+app.UseStaticFiles();//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
 app.UseHttpsRedirection();
 

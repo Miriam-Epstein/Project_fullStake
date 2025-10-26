@@ -7,9 +7,12 @@ myproject-react/coverage/
 # C# - Web API
 WebApiGames/bin/
 WebApiGames/obj/
-WebApiGames/.vs/
+WebApiGames/WebApiGames/bin/
+WebApiGames/WebApiGames/obj/
+WebApiGames/WebApiGames/.vs/
 *.user
 *.suo
+*.cache
 
 # SQL - temp files
 *.mdf
