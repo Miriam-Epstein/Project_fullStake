@@ -10,7 +10,7 @@
 
 **A modern, full-stack e-commerce platform for online game shopping**
 
-[Features](#-key-features) • [Installation](#-installation) • [Architecture](#-architecture) • [Demo](#-demo)
+[Features](#-key-features) • [Installation](#-installation) • [Architecture](#-architecture)
 
 </div>
 
@@ -18,17 +18,13 @@
 
 ## 📸 Project Preview
 
-### 🏠 Home Page - Beautiful Product Cards
-Modern, responsive product cards with stunning blue gradient themes, animated badges, and smooth hover effects.
+> **Screenshots coming soon** - Adding visual previews of the application interface
 
-### 🛒 Shopping Experience
-Seamless shopping cart with real-time quantity updates, interactive buttons, and intuitive checkout process.
-
-### 👤 Personal Area
-Comprehensive customer dashboard with purchase history, detailed transaction information, and order tracking.
-
-### 🔧 Admin Dashboard
-Full-featured admin panel for managing products, categories, inventory, and sales analytics.
+### Key Highlights
+- 🏠 **Beautiful Home Page** - Modern product cards with blue gradient themes
+- 🛒 **Smart Shopping Cart** - Real-time updates and intuitive checkout
+- 👤 **Customer Dashboard** - Complete purchase history and order tracking
+- 🔧 **Admin Panel** - Full product and category management system
 
 ---
 
@@ -45,7 +41,6 @@ Full-featured admin panel for managing products, categories, inventory, and sale
 ### 🛠️ Admin Features
 - ✅ **Product Management** - Add, update, delete products with validation
 - ✅ **Category Management** - Organize products by categories
-- ✅ **Inventory Control** - Real-time stock quantity updates
 - ✅ **Sales Analytics** - View detailed purchase information
 - ✅ **Modern UI** - Professional admin interface with icons-only actions
 
@@ -134,6 +129,28 @@ SQL Server Database
 |------------|---------|---------|
 | **SQL Server** | 2022 | Relational Database |
 | **Entity Framework** | 6.0 | Database Access |
+
+---
+
+## ⚡ Quick Start
+
+```bash
+# Clone the repository
+git clone https://github.com/Miriam-Epstein/Project_fullStake.git
+cd Project_fullStake
+
+# Setup database (run Server/ServerGame.sql in SQL Server)
+# Update connection string in WebApiGames/WebApiGames/Program.cs
+
+# Install dependencies
+cd myproject-react && npm install
+cd ../WebApiGames/WebApiGames && dotnet restore
+
+# Run the application
+dotnet run                    # Backend on https://localhost:7035
+cd ../../myproject-react
+npm start                     # Frontend on http://localhost:3000
+```
 
 ---
 
@@ -277,24 +294,19 @@ Project_fullStake/
 
 ## 🔧 Key Functionalities
 
-### 1. Real-Time Inventory Management
-- Automatic stock deduction on purchase
-- Stock quantity validation
-- Out-of-stock indicators
-
-### 2. Advanced Shopping Cart
+### 1. Advanced Shopping Cart
 - Persistent cart state with Redux
 - Quantity increase/decrease
 - Dynamic price calculation
 - Cart validation
 
-### 3. User Authentication
+### 2. User Authentication
 - Secure login system
 - User registration
 - Session management
 - Role-based access (Customer/Admin)
 
-### 4. Order Management
+### 3. Order Management
 - Complete purchase flow
 - Order history tracking
 - Detailed purchase information
@@ -387,16 +399,6 @@ dotnet publish -c Release
 
 ---
 
-## 👨‍💻 Developer
-
-**מרים אפשטיין** - Full Stack Developer
-
-- 📧 Email: m0533123308@gmail.com
-- 📱 Phone: 053-312-3308
-- 💼 LinkedIn: [Miriam Epstein](https://linkedin.com/in/miriam-epstein)
-
----
-
 ## 📄 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
@@ -405,10 +407,9 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 🙏 Acknowledgments
 
-- Built with ❤️ using React and .NET
-- Modern UI/UX best practices
-- Clean code architecture
-- Professional development standards
+This project was built as a full-stack e-commerce platform, demonstrating modern web development practices with React, .NET, and SQL Server.
+
+Special thanks to the open-source community for the amazing tools and libraries that made this project possible.
 
 ---
 
@@ -419,3 +420,30 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ⭐ Star this repo if you find it helpful!
 
 </div>
+
+---
+
+## 👨‍💻 Developer
+
+**מרים אפשטיין** - Full Stack Developer
+
+For questions, suggestions, or collaborations:
+- 📧 **Email:** m0533123308@gmail.com
+- 📱 **Phone:** 053-312-3308
+
+---
+
+## 📷 Adding Screenshots
+
+To showcase your project visually:
+
+1. Create a `screenshots` folder in the root directory
+2. Add screenshots with these names:
+   - `home-page.png` - Home page with product cards
+   - `shopping-cart.png` - Shopping cart view
+   - `personal-area.png` - Customer personal area
+   - `admin-dashboard.png` - Admin dashboard
+3. Use markdown syntax:
+   ```markdown
+   ![Description](./screenshots/image-name.png)
+   ```
