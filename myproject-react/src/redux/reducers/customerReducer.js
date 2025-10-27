@@ -1,7 +1,7 @@
 
 
 const initialState = {
-  currentCustomer: "no counct",  // ברירת מחדל ללקוח
+  currentCustomer: "לא מחובר",  // ברירת מחדל ללקוח
   passUser: "000",               // סיסמה או מזהה אחר
   customerId: 0                  // קוד מזהה של הלקוח
 };

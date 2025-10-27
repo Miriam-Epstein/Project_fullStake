@@ -12,12 +12,9 @@ import { Updatecategory } from "./updatecategory"
 import { Updategame } from "./updategame"
 import { Games } from "./games"
 import { Addgame } from "./addgame"
-import { Deletecategory } from "./deletecategory"
-import { Deletegame } from "./deletegame"
 import { Shoppingbasket  } from "./shoppingbasket"
 import { Completionpurchase } from "./completionpurchase"
 import { Personalarea } from "./personalarea"
-import { ShowSaleDetail } from "./showSaleDetail"
 import { ShowSaleDetaildWind } from "./showSaleDetaildWind"
 
 export const Myrouting = () => {

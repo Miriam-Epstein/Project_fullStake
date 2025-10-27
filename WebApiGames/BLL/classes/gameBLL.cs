@@ -101,10 +101,12 @@ namespace BLL.classes
             {
                 foreach (var item in Sp)                                             //update all games
                 {
-                    Game g = new Game();
-                    g = iMapper.Map<gameDTO, Game>(Getgame_ID(item.GameId));    //get game by id
-                    g.QuantityInStock = g.QuantityInStock - item.Quantity;
-                    I.Update(g,item.GameId);
+                    Game existingGame = I.Get().FirstOrDefault(g => g.GameId == item.GameId);
+                    if (existingGame != null)
+                    {
+                        existingGame.QuantityInStock = existingGame.QuantityInStock - item.Quantity;
+                        I.Update(existingGame, item.GameId);
+                    }
                 }
                 return true;
             }

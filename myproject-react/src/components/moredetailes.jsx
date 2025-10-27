@@ -1,55 +1,102 @@
-
-
-///*********לפני רידקס */
-import { useEffect, useState } from "react"
-import {getGameReactById} from "../axios/Gameaxios";
+import { useEffect, useState } from "react";
+import { getGameReactById } from "../axios/Gameaxios";
 import { useParams } from "react-router-dom";
+import "./moredetailes.css";
 
-export const Moredetailes=()=>{
-   
-    
-    const [list, setList] = useState([])
+export const Moredetailes = () => {
+  const { gameId } = useParams();
+  const [game, setGame] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-    let  gameId = useParams().gameId
+  useEffect(() => {
+    const fetchGame = async () => {
+      try {
+        setLoading(true);
+        const response = await getGameReactById(gameId);
+        setGame(response.data);
+      } catch (error) {
+        console.error("Error fetching game:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    const doSomthing = async () => {
-        
-        if (list.length == 0) {
-            let y = (await getGameReactById(gameId)).data;
-           
-            setList(y)
-        }
-    }
-        useEffect(() => {
-        doSomthing()
-    }, [])
+    fetchGame();
+  }, [gameId]);
 
-
-
-
+  if (loading) {
     return (
-        <div style={{ backgroundColor: '#f0f0f0', padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <div style={{ maxWidth: '600px', margin: 'aut0', borderRadius: '8px', boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)', overflow: 'hidden', backgroundColor: 'white' }}>
-                <img 
-                    style={{ width: '100%', height: '300px', objectFit: 'cover' }} 
-                    src={`https://localhost:7035/${list.picture}`} 
-                    alt={list.productName} 
-                />
-                <div style={{ padding: '20px' }}>
-                    <h1 className="card-title" style={{ fontSize: '2em', margin: '10px 0' }}>{list.productName}</h1>
-                    <h2 className="card-text" style={{ fontSize: '1.5em', color: '#333', margin: '10px 0' }}>{list.price}₪</h2>
-                    <h3 className="card-text" style={{ fontSize: '1em', color: '#555' }}>Game ID: {list.gameId}</h3>
-                </div>
-            </div>
+      <div className="game-details-container">
+        <div style={{ textAlign: 'center', padding: '4rem' }}>
+          <div className="loading-spinner" style={{ 
+            width: '50px', 
+            height: '50px', 
+            border: '4px solid #e2e8f0', 
+            borderTopColor: '#6366f1', 
+            borderRadius: '50%', 
+            animation: 'spin 1s linear infinite',
+            margin: '0 auto'
+          }}></div>
+          <p style={{ marginTop: '1rem', color: '#64748b' }}>טוען פרטי משחק...</p>
         </div>
+      </div>
     );
+  }
 
-    }
+  if (!game) {
+    return (
+      <div className="game-details-container">
+        <div className="empty-details">
+          <div className="empty-icon">❌</div>
+          <h2>משחק לא נמצא</h2>
+          <p>לא ניתן לטעון את פרטי המשחק</p>
+        </div>
+      </div>
+    );
+  }
 
-
-//***********אחרי רידקס*********** */
-//********אין צורך לשנות אין לה שימוש ברידקס*********** */
-
-
-
-    
+  return (
+    <div className="game-details-container">
+      <div className="game-details-card">
+        <img 
+          className="game-details-image"
+          src={(() => {
+            if (game.picture.startsWith('img')) {
+              if (game.categoryCode === 12) return `/img/board games=6/${game.picture}`;
+              if (game.categoryCode === 1) return `/img/dolls=3/${game.picture}`;
+              if (game.categoryCode === 3) return `/img/Bicycle=5/${game.picture}`;
+              if (game.categoryCode === 4) return `/img/creations=2/${game.picture}`;
+              if (game.categoryCode === 5) return `/img/doll stroller=4/${game.picture}`;
+              return `/img/${game.picture}`;
+            }
+            return `https://localhost:7035/${game.picture}`;
+          })()} 
+          alt={game.productName}
+          onError={(e) => {
+            e.target.src = 'https://via.placeholder.com/800x400?text=No+Image';
+          }}
+        />
+        <div className="game-details-content">
+          <h1 className="game-details-title">{game.productName}</h1>
+          <div className="game-details-price">{game.price}₪</div>
+          <div className="game-details-id">מספר משחק: #{game.gameId}</div>
+          
+          <div className="game-details-info">
+            <div className="info-item">
+              <div className="info-label">מחיר</div>
+              <div className="info-value">{game.price}₪</div>
+            </div>
+            <div className="info-item">
+              <div className="info-label">כמות במלאי</div>
+              <div className="info-value">{game.quantityInStock}</div>
+            </div>
+            <div className="info-item">
+              <div className="info-label">קוד קטגוריה</div>
+              <div className="info-value">{game.categoryCode}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};

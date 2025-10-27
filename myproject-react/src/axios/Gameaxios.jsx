@@ -32,7 +32,7 @@ return  axios.post(`${url}updategame/${id}`,game)
     return axios.get(`${url}Getgame_ID/${id}`)
     }
 
-    // //פונקציה שמעדכנת את כמות המוצר בסל
-    // export const SaveReactAmount=()=>{
-    //   return axios.post(`${url}saveAmount`)
-    // }
+    //פונקציה שמעדכנת את כמות המוצר בסל לאחר קנייה
+    export const SaveReactAmount=(shoppingBasket)=>{
+      return axios.post(`${url}saveAmount`, shoppingBasket)
+    }

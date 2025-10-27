@@ -1,9 +1,10 @@
-
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getReactALlGames, deleteReactGames } from "../axios/Gameaxios";
 import { setGamesAction, deleteGameAction } from "../redux/actions/gameActions";
 import { Link, Outlet } from "react-router-dom";
+import { FiTrash2, FiEdit, FiPlus } from "react-icons/fi";
+import "./games.css";
 
 export const Games = () => {
   const dispatch = useDispatch();
@@ -11,80 +12,106 @@ export const Games = () => {
 
   useEffect(() => {
     const fetchGames = async () => {
-      // if (games.length === 0) {
-        let res = await getReactALlGames();
-        if (res.data) {
-          dispatch(setGamesAction(res.data));
-        }
-      // }
+      let res = await getReactALlGames();
+      if (res.data) {
+        dispatch(setGamesAction(res.data));
+      }
     };
     fetchGames();
   }, [dispatch, games.length]);
 
-  const f1 = async (gameId) => {
-    let success = await deleteReactGames(gameId);
-    if (success) {
-      dispatch(deleteGameAction(gameId));
-      alert("הצלחת");
-    } else {
-      alert("נכשלת");
+  const deleteGame = async (gameId) => {
+    if (window.confirm("האם אתה בטוח שברצונך למחוק את המשחק הזה?")) {
+      let success = await deleteReactGames(gameId);
+      if (success) {
+        dispatch(deleteGameAction(gameId));
+        alert("המשחק נמחק בהצלחה");
+      } else {
+        alert("מחיקת המשחק נכשלה");
+      }
     }
   };
 
   return (
-    <>
-      <div className="container mt-6">
-        <table className="table table-bordered" style={{ marginTop: '50px', textAlign: 'center' }}>
+    <div className="games-management-container">
+      <div className="games-management-header">
+        <h1 className="games-management-title">🎮 ניהול משחקים</h1>
+        <p className="games-management-subtitle">ניהול כל המשחקים במערכת</p>
+      </div>
+
+      <Link className="add-game-button" to="/games/addgame">
+        <FiPlus /> הוסף משחק חדש
+      </Link>
+
+      <div className="games-table-container">
+        <table className="games-table">
           <thead>
             <tr>
               <th>קוד משחק</th>
               <th>שם משחק</th>
               <th>מחיר</th>
-              <th>כמות</th>
+              <th>כמות במלאי</th>
               <th>קוד קטגוריה</th>
               <th>תמונה</th>
               <th>שם קטגוריה</th>
-              <th>אפשריות נוספות</th>
+              <th>פעולות</th>
             </tr>
           </thead>
           <tbody>
-            {games.map((x) => (
-              <tr key={x.gameId}>
-                <td>{x.gameId}</td>
-                <td>{x.productName}</td>
-                <td>{x.price}₪</td>
-                <td>{x.quantityInStock}</td>
-                <td>{x.categoryCode}</td>
-                <td><img width={'50px'} height={'50px'} src={`https://localhost:7035/${x.picture}`} alt="" /></td>
-                <td>{x.categoryName}</td>
+            {games.map((game) => (
+              <tr key={game.gameId}>
+                <td className="game-id">#{game.gameId}</td>
+                <td>{game.productName}</td>
+                <td className="game-price">{game.price}₪</td>
+                <td className="game-quantity">{game.quantityInStock}</td>
+                <td>{game.categoryCode}</td>
+                <td className="game-image-cell">
+                  <img 
+                    width="50px" 
+                    height="50px" 
+                    src={(() => {
+                      if (game.picture.startsWith('img')) {
+                        if (game.categoryCode === 12) return `/img/board games=6/${game.picture}`;
+                        if (game.categoryCode === 1) return `/img/dolls=3/${game.picture}`;
+                        if (game.categoryCode === 3) return `/img/Bicycle=5/${game.picture}`;
+                        if (game.categoryCode === 4) return `/img/creations=2/${game.picture}`;
+                        if (game.categoryCode === 5) return `/img/doll stroller=4/${game.picture}`;
+                        return `/img/${game.picture}`;
+                      }
+                      return `https://localhost:7035/${game.picture}`;
+                    })()} 
+                    alt={game.productName}
+                    onError={(e) => {
+                      e.target.src = 'https://via.placeholder.com/50x50?text=No+Image';
+                    }}
+                  />
+                </td>
+                <td>{game.categoryName}</td>
                 <td>
-                  <button onClick={() => f1(x.gameId)}>מחק</button>{" "}
-                  <Link to={`/games/updategame/${x.gameId}`}>עדכון</Link>
+                  <div className="action-buttons">
+                    <button 
+                      className="action-button delete-button"
+                      onClick={() => deleteGame(game.gameId)}
+                      title="מחק"
+                    >
+                      <FiTrash2 />
+                    </button>
+                    <Link 
+                      className="action-button update-button"
+                      to={`/games/updategame/${game.gameId}`}
+                      title="עדכון"
+                    >
+                      <FiEdit />
+                    </Link>
+                  </div>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-      <Link className="btn btn-outline-dark" to={`/games/addgame`}>הוספת משחק</Link>
+
       <Outlet />
-    </>
+    </div>
   );
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

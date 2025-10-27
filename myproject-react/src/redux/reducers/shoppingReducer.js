@@ -1,7 +1,7 @@
 const initialState = {
     sal: [], 
     sum: 0,
-    currentCustomer: "no counct",
+    currentCustomer: "לא מחובר",
     passUser: null,
   };
   

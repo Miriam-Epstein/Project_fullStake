@@ -1,12 +1,8 @@
-
-
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import {
-  setSal,
-  setSum,
-} from "../redux/actions/shoppingActions"; // פעולה לעדכון סל וקנייה
-
+import { setSal, setSum } from "../redux/actions/shoppingActions";
+import { FiShoppingCart, FiPlus, FiMinus, FiCheckCircle } from "react-icons/fi";
+import "./shoppingbasket.css";
 
 export const Shoppingbasket = () => {
   const dispatch = useDispatch();
@@ -18,12 +14,11 @@ export const Shoppingbasket = () => {
   const increaseQuantity = (gameId) => {
     const updatedSal = sal.map((item) => {
       if (item.gameId === gameId) {
-        const updatedItem = {
+        return {
           ...item,
           quantity: item.quantity + 1,
           finalPrice: (item.price * (item.quantity + 1)).toFixed(2),
         };
-        return updatedItem;
       }
       return item;
     });
@@ -41,7 +36,6 @@ export const Shoppingbasket = () => {
           };
           acc.push(updatedItem);
         }
-        // אם quantity == 1 לא מחזירים כלום (מסירים מהסל)
       } else {
         acc.push(item);
       }
@@ -50,81 +44,96 @@ export const Shoppingbasket = () => {
     dispatch(setSal(updatedSal));
   };
 
-  const chak = () => {
-    if (customer === "no account" || !customer) {
+  const calculateTotal = () => {
+    return sal.reduce((total, item) => total + parseFloat(item.finalPrice), 0).toFixed(2);
+  };
+
+  const handleCheckout = () => {
+    if (customer === "לא מחובר" || !customer) {
       alert("לא התחברת, מועבר לעמוד התחברות");
       navigate("/login");
     } else {
+      dispatch(setSum(calculateTotal()));
       navigate("/completionpurchase");
     }
   };
 
   return (
-    <div className="container mt-6">
-      <h2 className="text-center mb-4" style={{ color: '#007BFF' }}>Shopping Basket</h2>
-
-      <div className="d-flex justify-content-between align-items-center mb-4">
-        <h2>
-          <i className="fas fa-shopping-cart text-primary"></i> Your Sal
-        </h2>
-        {sal.length !== 0 && (
-          <button className="btn btn-success" onClick={chak}>
-            <i className="fas fa-credit-card"></i> Complete Purchase
-          </button>
-        )}
+    <div className="cart-container">
+      <div className="cart-header">
+        <h1 className="cart-title">🛒 עגלת קניות</h1>
+        <p className="cart-subtitle">בדוק את הפריטים שלך</p>
       </div>
 
-      <table className="table table-bordered table-striped text-center" style={{ backgroundColor: '#f8f9fa' }}>
-        <thead className="thead-light">
-          <tr>
-            <th scope="col">gameId</th>
-            <th scope="col">productName</th>
-            <th scope="col">price</th>
-            <th scope="col">quantity</th>
-            <th scope="col">finalPrice</th>
-            <th scope="col">actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {sal.map((x) => (
-            <tr key={x.gameId}>
-              <td>{x.gameId}</td>
-              <td>{x.productName}</td>
-              <td>{parseFloat(x.price).toFixed(2)}₪</td>
-              <td>{x.quantity}</td>
-              <td>{parseFloat(x.finalPrice).toFixed(2)}₪</td>
-              <td>
-                <button
-                  className="btn btn-success m-1"
-                  onClick={() => increaseQuantity(x.gameId)}
-                  style={{ borderRadius: '5px' }}
-                >
-                  +
-                </button>
-                <button
-                  className="btn btn-danger m-1"
-                  onClick={() => decreaseQuantity(x.gameId)}
-                  style={{ borderRadius: '5px' }}
-                >
-                  -
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      {sal.length === 0 && (
-        <div className="text-center text-muted py-5">
-          <h4>Your Sal is empty.</h4>
+      {sal.length === 0 ? (
+        <div className="empty-cart">
+          <div className="empty-cart-icon">🛒</div>
+          <h2 className="empty-cart-title">העגלה שלך ריקה</h2>
+          <p className="empty-cart-message">הוסף משחקים כדי להתחיל!</p>
         </div>
+      ) : (
+        <>
+          <div className="cart-summary">
+            <div className="total-info">
+              <span className="total-label">סה"כ:</span>
+              <span className="total-amount">{calculateTotal()}₪</span>
+            </div>
+            <button className="checkout-btn" onClick={handleCheckout}>
+              <FiCheckCircle /> השלם רכישה
+            </button>
+          </div>
+
+          <div className="cart-items">
+            {sal.map((item) => (
+              <div className="cart-item" key={item.gameId}>
+                <div className="item-image-container">
+                  <img 
+                    className="item-image"
+                    src={(() => {
+                      if (item.picture && item.picture.startsWith('img')) {
+                        if (item.categoryCode === 12) return `/img/board games=6/${item.picture}`;
+                        if (item.categoryCode === 1) return `/img/dolls=3/${item.picture}`;
+                        if (item.categoryCode === 3) return `/img/Bicycle=5/${item.picture}`;
+                        if (item.categoryCode === 4) return `/img/creations=2/${item.picture}`;
+                        if (item.categoryCode === 5) return `/img/doll stroller=4/${item.picture}`;
+                        return `/img/${item.picture}`;
+                      }
+                      return item.picture ? `https://localhost:7035/${item.picture}` : 'https://via.placeholder.com/80x80?text=No+Image';
+                    })()} 
+                    alt={item.productName}
+                    onError={(e) => {
+                      e.target.src = 'https://via.placeholder.com/80x80?text=No+Image';
+                    }}
+                  />
+                </div>
+                <div className="item-details">
+                  <div className="item-id">#{item.gameId}</div>
+                  <div className="item-name">{item.productName}</div>
+                  <div className="item-price">{parseFloat(item.price).toFixed(2)}₪</div>
+                </div>
+                
+                <div className="quantity-controls">
+                  <button
+                    className="quantity-btn decrease"
+                    onClick={() => decreaseQuantity(item.gameId)}
+                  >
+                    <FiMinus />
+                  </button>
+                  <span className="quantity-display">{item.quantity}</span>
+                  <button
+                    className="quantity-btn increase"
+                    onClick={() => increaseQuantity(item.gameId)}
+                  >
+                    <FiPlus />
+                  </button>
+                </div>
+
+                <div className="final-price">{parseFloat(item.finalPrice).toFixed(2)}₪</div>
+              </div>
+            ))}
+          </div>
+        </>
       )}
     </div>
   );
 };
-
-
-
-
-
-

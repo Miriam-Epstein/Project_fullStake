@@ -1,0 +1,240 @@
+/* Modern Personal Area Styles */
+
+.personal-area-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  padding: 2rem;
+}
+
+.personal-area-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.personal-area-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+}
+
+.personal-area-subtitle {
+  color: #64748b;
+  font-size: 1.125rem;
+}
+
+.purchases-card {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.purchases-header {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  color: white;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.purchases-icon {
+  font-size: 1.5rem;
+}
+
+.purchases-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* Purchases Grid */
+.purchases-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+/* Purchase Card */
+.purchase-card {
+  background: white;
+  border-radius: 1rem;
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.purchase-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-color: #6366f1;
+}
+
+.purchase-card-header {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.purchase-icon-wrapper {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.purchase-card-icon {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.purchase-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.purchase-id {
+  font-weight: bold;
+  color: #1e293b;
+  font-size: 1rem;
+}
+
+.purchase-date-small {
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+.purchase-card-body {
+  padding: 1.25rem;
+}
+
+.purchase-detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.purchase-detail-row:last-of-type {
+  border-bottom: none;
+}
+
+.detail-label {
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+.detail-value {
+  color: #1e293b;
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.purchase-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  margin-top: 0.5rem;
+  border-top: 2px solid #e2e8f0;
+}
+
+.total-label {
+  color: #475569;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.total-value {
+  color: #10b981;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.purchase-card-footer {
+  padding: 1rem 1.25rem;
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+}
+
+.details-button {
+  background: #6366f1;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.details-button:hover {
+  background: #4f46e5;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #64748b;
+}
+
+.empty-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.empty-title {
+  font-size: 1.5rem;
+  color: #475569;
+  margin-bottom: 0.5rem;
+}
+
+.empty-message {
+  color: #94a3b8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .personal-area-container {
+    padding: 1rem;
+  }
+
+  .personal-area-title {
+    font-size: 2rem;
+  }
+
+  .purchases-grid {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .purchase-card-header {
+    padding: 1rem;
+  }
+
+  .purchase-card-body {
+    padding: 1rem;
+  }
+}
+

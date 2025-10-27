@@ -1,10 +1,10 @@
-
-
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addReactCategory, getAllReactCategorys } from "../axios/Categoryaxios";
 import { setCategoriesAction } from "../redux/actions/categoryActions";
 import { useNavigate } from "react-router-dom";
+import { FiLoader, FiSave, FiTag } from "react-icons/fi";
+import "./addcategory.css";
 
 export const Addcategory = () => {
   const dispatch = useDispatch();
@@ -15,8 +15,18 @@ export const Addcategory = () => {
     categoryName: ""
   });
 
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
   const addGood = async () => {
-    console.log("שולח לשרת קטגוריה חדשה:", item);
+    if (!item.categoryName.trim()) {
+      setError("שם קטגוריה חובה");
+      return;
+    }
+
+    setLoading(true);
+    setError("");
+    
     try {
       const response = await addReactCategory(item);
       if (response?.data) {
@@ -27,41 +37,65 @@ export const Addcategory = () => {
           dispatch(setCategoriesAction(all.data));
         }
 
-        // ניקוי שדות
-        setItem({ categoryId: 0, categoryName: "" });
         navigate("/categorys");
-
       } else {
-        alert("אוי, הקטגוריה לא נוספה (data ריק)");
+        setError("הקטגוריה לא נוספה");
       }
     } catch (error) {
       console.error("שגיאה בהוספה לשרת:", error);
-      alert("נכשל בהוספה לשרת");
+      setError("נכשל בהוספה לשרת");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="container mt-4">
-      {/* //אין צורך בלהכניס אידי של קטגוריה כי זה אוטמטי */}
-      {/* <input
-        className="form-control"
-        type="number"
-        placeholder="categoryId"
-        value={item.categoryId}
-        onChange={(e) => setItem({ ...item, categoryId: +e.target.value })}
-      /> */}
-      
-      <input
-        className="form-control mt-2"
-        type="text"
-        placeholder="categoryName"
-        value={item.categoryName}
-        onChange={(e) => setItem({ ...item, categoryName: e.target.value })}
-      />
-      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
-        <button className="btn btn-primary" onClick={addGood}>
-          save_addCategory
-        </button>
+    <div className="add-category-container">
+      <div className="add-category-card">
+        <div className="add-category-header">
+          <h1 className="add-category-title">🏷️ הוסף קטגוריה חדשה</h1>
+          <p className="add-category-subtitle">הוסף קטגוריה חדשה למערכת</p>
+        </div>
+
+        <div className="form-section">
+          <div className="form-group">
+            <label className="form-label">שם הקטגוריה *</label>
+            <input
+              type="text"
+              className={`form-input ${error ? 'error' : ''}`}
+              placeholder="הכנס שם קטגוריה"
+              value={item.categoryName}
+              onChange={(e) => setItem({ ...item, categoryName: e.target.value })}
+              disabled={loading}
+            />
+            {error && <div className="error-message">{error}</div>}
+          </div>
+        </div>
+
+        <div className="form-actions">
+          <button
+            className="cancel-button"
+            onClick={() => navigate("/categorys")}
+            disabled={loading}
+          >
+            ביטול
+          </button>
+          <button
+            className="save-button"
+            onClick={addGood}
+            disabled={loading}
+          >
+            {loading ? (
+              <>
+                <FiLoader className="spinning" /> מעבד...
+              </>
+            ) : (
+              <>
+                <FiSave /> שמור קטגוריה
+              </>
+            )}
+          </button>
+        </div>
       </div>
     </div>
   );

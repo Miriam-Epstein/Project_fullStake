@@ -1,34 +1,49 @@
-
 import { useState } from "react";
 import { addCustomerReact } from "../axios/Customeraxios";
 import { useDispatch } from "react-redux";
-import { setCurrentCustomer, setCustomerId, setPassUser } from "../redux/actions/customerActions"; // הוספתי setCustomerId ו־setPassUser
+import { setCurrentCustomer, setCustomerId, setPassUser } from "../redux/actions/customerActions";
 import { useNavigate } from "react-router-dom";
+import { FiUser, FiLock, FiCreditCard, FiUserPlus, FiLoader } from "react-icons/fi";
+import "./signup.css";
 
 export const Signup = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  
   const [use, setUse] = useState({
     customerId: 0,
     name: "",
     password: "",
     creditInfo: ""
   });
-  const navigate = useNavigate();
+  
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
+
+  const validate = () => {
+    const newErrors = {};
+    if (!use.name) newErrors.name = "שם חובה";
+    if (!use.password) newErrors.password = "סיסמה חובה";
+    if (!use.creditInfo) newErrors.creditInfo = "פרטי אשראי חובה";
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const signupGood = async () => {
-    if (use.name === "" || use.password === "" || use.creditInfo === "") {
-      alert("לא הוכנס תקין הכנס שוב");
-    } else {
-      let y = (await addCustomerReact(use)).data; // y = customerId שחוזר מהשרת
+    if (!validate()) return;
+
+    setLoading(true);
+
+    try {
+      const y = (await addCustomerReact(use)).data;
+      
       if (y) {
-        //alert("שלום וברכה נרשמת בהצלחה");
         alert("שלום וברכה נרשמת בהצלחה אתה מועבר להתחברות");
-        // עדכון ברידקס:
+        
         dispatch(setCurrentCustomer(use.name));
         dispatch(setCustomerId(y));
         dispatch(setPassUser(use.password));
 
-        // שמירה בזיכרון זמני של הדפדפן:
         sessionStorage.setItem("currentCustomer", use.name);
         sessionStorage.setItem("customerId", y);
         sessionStorage.setItem("passUser", use.password);
@@ -37,62 +52,92 @@ export const Signup = () => {
       } else {
         alert("נכשל, לא הצליח להירשם");
       }
+    } catch (error) {
+      console.error("Signup error:", error);
+      alert("An error occurred. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="container d-flex justify-content-center mt-5">
-      <div className="card shadow" style={{ width: "400px" }}>
-        <div className="card-body">
-          <h3 className="card-title text-center mb-4">Sign Up</h3>
-          <div className="mb-3">
-            <label className="form-label" htmlFor="custName">
-              Customer Name
-            </label>
+    <div className="signup-container">
+      <div className="signup-card">
+        <div className="signup-header">
+          <div className="signup-icon">✨</div>
+          <h1 className="signup-title">צור חשבון</h1>
+          <p className="signup-subtitle">הצטרף אלינו היום</p>
+        </div>
+
+        <div className="form-group">
+          <label className="form-label">שם לקוח</label>
+          <div className="form-input-wrapper">
+            <FiUser className="form-icon" />
             <input
-              id="name"
-              className="form-control"
+              className={`form-input ${errors.name ? 'error' : ''}`}
               type="text"
-              placeholder="Enter customer name"
-              onBlur={(e) => setUse({ ...use, name: e.target.value })}
+              placeholder="הכנס שם לקוח"
+              value={use.name}
+              onChange={(e) => setUse({ ...use, name: e.target.value })}
+              disabled={loading}
             />
           </div>
-          <div className="mb-3">
-            <label className="form-label" htmlFor="password">
-              Password
-            </label>
+          {errors.name && <div className="error-message">{errors.name}</div>}
+        </div>
+
+        <div className="form-group">
+          <label className="form-label">סיסמה</label>
+          <div className="form-input-wrapper">
+            <FiLock className="form-icon" />
             <input
-              id="password"
-              className="form-control"
+              className={`form-input ${errors.password ? 'error' : ''}`}
               type="password"
-              placeholder="Enter password"
-              onBlur={(e) => setUse({ ...use, password: e.target.value })}
+              placeholder="הכנס סיסמה"
+              value={use.password}
+              onChange={(e) => setUse({ ...use, password: e.target.value })}
+              disabled={loading}
             />
           </div>
-          <div className="mb-3">
-            <label className="form-label" htmlFor="creditInfo">
-              Credit Details
-            </label>
+          {errors.password && <div className="error-message">{errors.password}</div>}
+        </div>
+
+        <div className="form-group">
+          <label className="form-label">פרטי אשראי</label>
+          <div className="form-input-wrapper">
+            <FiCreditCard className="form-icon" />
             <input
-              id="creditInfo"
-              className="form-control"
+              className={`form-input ${errors.creditInfo ? 'error' : ''}`}
               type="text"
-              placeholder="Enter credit details"
-              onBlur={(e) => setUse({ ...use, creditInfo: e.target.value })}
+              placeholder="הכנס פרטי אשראי"
+              value={use.creditInfo}
+              onChange={(e) => setUse({ ...use, creditInfo: e.target.value })}
+              disabled={loading}
             />
           </div>
-          <button
-            className="btn btn-outline-primary w-100 mb-2"
-            onClick={signupGood}
-          >
-            Sign Up
-          </button>
+          {errors.creditInfo && <div className="error-message">{errors.creditInfo}</div>}
+        </div>
+
+        <button
+          className="signup-button"
+          onClick={signupGood}
+          disabled={loading}
+        >
+          {loading ? (
+            <>
+              <div className="loading-spinner"></div>
+              נרשם...
+            </>
+          ) : (
+            <>
+              <FiUserPlus /> הירשם
+            </>
+          )}
+        </button>
+
+        <div className="footer-link">
+          כבר יש לך חשבון? <a href="#/login">התחבר</a>
         </div>
       </div>
     </div>
   );
 };
-
-
-
-

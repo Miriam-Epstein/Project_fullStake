@@ -1,94 +1,142 @@
-
-//***********סל קניות מתעדכן********** */
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { haveThisCustomerReact } from "../axios/Customeraxios";
 import { setCurrentCustomer, setPassUser, setCustomerId } from "../redux/actions/customerActions";
-import { clearSal } from "../redux/actions/shoppingActions"; // ✅ נוספה שורה זו
+import { clearSal } from "../redux/actions/shoppingActions";
+import { FiUser, FiLock, FiLogIn, FiLoader } from "react-icons/fi";
+import "./login.css";
 
 export const Login = () => {
-  const [customer, setCustomer] = useState({});
+  const [customer, setCustomer] = useState({ name: "", pass: "" });
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const validate = () => {
+    const newErrors = {};
+    if (!customer.name) newErrors.name = "שם חובה";
+    if (!customer.pass) newErrors.pass = "סיסמה חובה";
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleLogin = async () => {
-    if (customer.name === "manager" && customer.pass === "1234") {
-      dispatch(setCurrentCustomer("manager"));
-      dispatch(setPassUser("1234"));
-      dispatch(setCustomerId(-1));
-      dispatch(clearSal()); // גם מנהל מתחיל עם סל ריק
+    if (!validate()) return;
 
-      sessionStorage.setItem("currentCustomer", "manager");
-      sessionStorage.setItem("passUser", "1234");
-      sessionStorage.setItem("customerId", "-1");
-      navigate("/home");
-    } else {
-      try {
-        const response = await haveThisCustomerReact(customer.name, customer.pass);
-        const customerCode = response.data;
+    setLoading(true);
 
-        if (customerCode !== 0) {
-          alert("שלום וברכה אתה קיים במערכת ");
-          dispatch(setCurrentCustomer(customer.name));
-          dispatch(setPassUser(customer.pass));
-          dispatch(setCustomerId(customerCode));
-          dispatch(clearSal()); // איפוס הסל אחרי התחברות
+    try {
+      // Manager login
+      if (customer.name === "manager" && customer.pass === "1234") {
+        dispatch(setCurrentCustomer("manager"));
+        dispatch(setPassUser("1234"));
+        dispatch(setCustomerId(-1));
+        dispatch(clearSal());
 
-          sessionStorage.setItem("currentCustomer", customer.name);
-          sessionStorage.setItem("passUser", customer.pass);
-          sessionStorage.setItem("customerId", customerCode);
-         
-          navigate("/home");
-        } else {
-          alert("הלקוח לא קיים במערכת");
-          alert("אתה מועבר להרשמה לאתר בהצלחה");
-
-          dispatch(setCurrentCustomer("no account"));
-          dispatch(setCustomerId(0));
-          navigate("/signup");
-        }
-      } catch (error) {
-        console.error("Login error:", error);
+        sessionStorage.setItem("currentCustomer", "manager");
+        sessionStorage.setItem("passUser", "1234");
+        sessionStorage.setItem("customerId", "-1");
+        
+        navigate("/home");
+        return;
       }
+
+      // Regular customer login
+      const response = await haveThisCustomerReact(customer.name, customer.pass);
+      const customerCode = response.data;
+
+      if (customerCode !== 0) {
+        alert("שלום וברכה אתה קיים במערכת");
+        dispatch(setCurrentCustomer(customer.name));
+        dispatch(setPassUser(customer.pass));
+        dispatch(setCustomerId(customerCode));
+        dispatch(clearSal());
+
+        sessionStorage.setItem("currentCustomer", customer.name);
+        sessionStorage.setItem("passUser", customer.pass);
+        sessionStorage.setItem("customerId", customerCode);
+        
+        navigate("/home");
+      } else {
+        alert("הלקוח לא קיים במערכת");
+        alert("אתה מועבר להרשמה לאתר בהצלחה");
+        dispatch(setCurrentCustomer("לא מחובר"));
+        dispatch(setCustomerId(0));
+        navigate("/signup");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      alert("An error occurred. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh', backgroundColor: '#f5f5f5' }}>
-      <div className="card p-4 shadow-lg" style={{ width: '100%', maxWidth: '400px' }}>
-        <h2 className="text-center mb-4" style={{ color: '#333' }}>Login</h2>
-        <div className="form-group mb-3">
-          <label htmlFor="name" className="form-label">Name</label>
-          <input 
-            type="text" 
-            id="name" 
-            className="form-control" 
-            placeholder="Enter your name"
-            onBlur={(e) => setCustomer({ ...customer, name: e.target.value })}
-          />
+    <div className="login-container">
+      <div className="login-card">
+        <div className="login-header">
+          <div className="login-icon">🔐</div>
+          <h1 className="login-title">ברוך הבא</h1>
+          <p className="login-subtitle">התחבר לחשבון שלך</p>
         </div>
-        <div className="form-group mb-3">
-          <label htmlFor="password" className="form-label">Code</label>
-          <input 
-            type="password" 
-            id="password" 
-            className="form-control" 
-            placeholder="Enter your password"
-            onBlur={(e) => setCustomer({ ...customer, pass: e.target.value })}
-          />
+
+        <div className="form-group">
+          <label className="form-label">שם</label>
+          <div className="form-input-wrapper">
+            <FiUser className="form-icon" />
+            <input
+              type="text"
+              className={`form-input ${errors.name ? 'error' : ''}`}
+              placeholder="הכנס את שמך"
+              value={customer.name}
+              onChange={(e) => setCustomer({ ...customer, name: e.target.value })}
+              disabled={loading}
+            />
+          </div>
+          {errors.name && <div className="error-message">{errors.name}</div>}
         </div>
-        <button 
-          className="btn btn-info btn-block w-100" 
-          onClick={handleLogin} 
-          style={{ padding: '10px' }}
+
+        <div className="form-group">
+          <label className="form-label">סיסמה</label>
+          <div className="form-input-wrapper">
+            <FiLock className="form-icon" />
+            <input
+              type="password"
+              className={`form-input ${errors.pass ? 'error' : ''}`}
+              placeholder="הכנס את הסיסמה שלך"
+              value={customer.pass}
+              onChange={(e) => setCustomer({ ...customer, pass: e.target.value })}
+              disabled={loading}
+              onKeyPress={(e) => e.key === 'Enter' && handleLogin()}
+            />
+          </div>
+          {errors.pass && <div className="error-message">{errors.pass}</div>}
+        </div>
+
+        <button
+          className="login-button"
+          onClick={handleLogin}
+          disabled={loading}
         >
-          Log In
+          {loading ? (
+            <>
+              <div className="loading-spinner"></div>
+              מתחבר...
+            </>
+          ) : (
+            <>
+              <FiLogIn /> התחבר
+            </>
+          )}
         </button>
+
+        <div className="footer-link">
+          אין לך חשבון? <a href="#/signup">הירשם</a>
+        </div>
       </div>
     </div>
   );
 };
-
-

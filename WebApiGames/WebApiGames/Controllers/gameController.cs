@@ -67,13 +67,12 @@ namespace WebApiGames.Controllers
         }
 
 
-        ////פונקציה שמעדכנת את כמות בסל
-        //[HttpPut("saveAmount")]
-        //public bool saveEmount(List<shoppingBasketDTO> Sp)
-        //{
-        //    return I.saveEmount(Sp);
-
-        //}
+        //פונקציה שמעדכנת את כמות בסל לאחר קנייה
+        [HttpPost("saveAmount")]
+        public bool saveEmount(List<shoppingBasketDTO> Sp)
+        {
+            return I.saveEmount(Sp);
+        }
 
     }
 }

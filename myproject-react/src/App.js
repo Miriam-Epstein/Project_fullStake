@@ -5,6 +5,7 @@ import './App.css';
 import { HashRouter } from 'react-router-dom';
 import { Menu } from './components/menu';
 import { Myrouting } from './components/myrouting';
+import { Footer } from './components/footer';
 import { useSelector, useDispatch } from 'react-redux';
 import { setCustomer, setSal, setPassUser, setSum } from './redux/actions/shoppingActions';
 import { setCurrentCustomer, setCustomerId } from './redux/actions/customerActions';
@@ -51,6 +52,7 @@ function App() {
       <HashRouter>
         <Menu />
         <Myrouting />
+        <Footer />
       </HashRouter>
     </div>
   );
